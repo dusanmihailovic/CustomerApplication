@@ -19,7 +19,13 @@ public class CustomerController {
 	@Autowired
 	private StateService stateService;
 	
-	@RequestMapping(value = "/addCustomer")
+	@RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
+	public String getCustomer(@ModelAttribute ("customer") Customer customer){
+		
+		return "addCustomer";
+	}
+	
+	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
 	public String addCustomer(@ModelAttribute ("customer") Customer customer){
 		
 		System.out.println("customer is: " + customer.getFirstName());
