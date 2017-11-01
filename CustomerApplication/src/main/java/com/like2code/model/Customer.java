@@ -1,8 +1,13 @@
 package com.like2code.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Customer {
@@ -14,6 +19,9 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	private String city;
+	
+	@OneToMany(mappedBy="customer", cascade=CascadeType.ALL)
+	private List<Item> items = new ArrayList<Item>();
 
 	public String getCity() {
 		return city;
@@ -21,10 +29,13 @@ public class Customer {
 	public Long getCustomerId() {
 		return customerId;
 	}
-	
 	public String getFirstName() {
 		return firstName;
 	}
+	public List<Item> getItems() {
+		return items;
+	}
+	
 	public String getLastName() {
 		return lastName;
 	}
@@ -36,6 +47,9 @@ public class Customer {
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;

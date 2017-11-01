@@ -3,12 +3,19 @@ package com.like2code.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.like2code.model.Item;
 import com.like2code.model.Product;
+import com.like2code.repository.ItemRepository;
 
 @Service("productService")
 public class ProductServiceImpl implements ProductService {
+	
+	@Autowired
+	private ItemRepository itemRepository;
 	
 	public List<Product> findAllProducts(){
 		
@@ -28,6 +35,14 @@ public class ProductServiceImpl implements ProductService {
 		
 		return products;
 		
+	}
+	
+	@Transactional
+	public Item save(Item item) {
+		
+		item = itemRepository.save(item);
+		 
+		return item;
 	}
 
 }

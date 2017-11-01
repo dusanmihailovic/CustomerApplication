@@ -3,6 +3,7 @@ package com.like2code.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Item {
@@ -17,6 +18,12 @@ public class Item {
 	private int quantity;
 	private double price;
 	
+	@ManyToOne
+	private Customer customer;
+	
+	public Customer getCustomer() {
+		return customer;
+	}
 	public Long getCustomerId() {
 		return customerId;
 	}
@@ -29,9 +36,12 @@ public class Item {
 	public String getProduct() {
 		return product;
 	}
-	
 	public int getQuantity() {
 		return quantity;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
