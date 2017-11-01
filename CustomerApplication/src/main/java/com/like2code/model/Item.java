@@ -1,19 +1,34 @@
 package com.like2code.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Item {
+	
+	@Id
+	@GeneratedValue
+	private Long customerId;
 	
 	private String orderItem;
 	private int quantity;
 	private double price;
-	
+	public Long getCustomerId() {
+		return customerId;
+	}
 	public String getOrderItem() {
 		return orderItem;
 	}
+	
 	public double getPrice() {
 		return price;
 	}
 	public int getQuantity() {
 		return quantity;
+	}
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
 	public void setOrderItem(String orderItem) {
