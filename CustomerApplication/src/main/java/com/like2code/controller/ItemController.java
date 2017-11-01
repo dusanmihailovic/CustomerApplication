@@ -1,17 +1,26 @@
 package com.like2code.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.like2code.model.Item;
+import com.like2code.model.Product;
+import com.like2code.service.ProductService;
 
 @Controller
 @SessionAttributes("item")
 public class ItemController {
+	
+	@Autowired
+	public ProductService productService;
 	
 	@RequestMapping(value = "/addItem", method = RequestMethod.GET)
 	public String addItem(Model model){
@@ -29,6 +38,11 @@ public class ItemController {
 		System.out.println("Order item is: " + item.getOrderItem());
 		
 		return "addItem";
+	}
+	
+	@RequestMapping(value = "/products", method = RequestMethod.GET)
+	public @ResponseBody List <Product> findAllProducts(){
+		return productService.findAllProducts();
 	}
 
 }

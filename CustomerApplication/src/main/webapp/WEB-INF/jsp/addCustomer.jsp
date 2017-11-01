@@ -22,7 +22,7 @@
     
 <script type="text/javascript" src="jquery-1.8.3.js"></script>
 
-<script type="text/javascript">
+<!--  <script type="text/javascript">
 	$(document).ready(
 		function(){
 			$.getJSON('<spring:url value="states.json"/>', {
@@ -41,7 +41,7 @@
 			
 		});
 	
-</script>
+</script>-->
 
 </head>
 <body>
@@ -60,13 +60,6 @@
 			<td>City:</td>
 			<td><form:input path="city"/></td>
 		</tr>
-		<tr>
-			<td>State:</td>
-			<td>
-				<form:select id="states" path="state"></form:select>
-			</td>
-		</tr>
-		
 		<tr>
 			<td colspan="3">
 				<input type="submit" value="Enter New Customer"/>

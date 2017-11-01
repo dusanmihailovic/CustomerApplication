@@ -14,8 +14,7 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	private String city;
-	private String state;
-	
+
 	public String getCity() {
 		return city;
 	}
@@ -29,9 +28,6 @@ public class Customer {
 	public String getLastName() {
 		return lastName;
 	}
-	public String getState() {
-		return state;
-	}
 	public void setCity(String city) {
 		this.city = city;
 	}
@@ -43,9 +39,6 @@ public class Customer {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-	public void setState(String state) {
-		this.state = state;
 	}
 
 }

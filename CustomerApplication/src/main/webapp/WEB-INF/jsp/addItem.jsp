@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+    
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
@@ -18,6 +20,29 @@
     </style>
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
+<script type="text/javascript" src="jquery-1.8.3.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(
+		function(){
+			$.getJSON('<spring:url value="products.json"/>', {
+				ajax : 'true'
+			}, function(data){
+				var html = '<option value="">--Please select one--</option>'
+				var len = data.length;
+				for(var i = 0; i < len; i++) {
+					html += '<option value="' + data[i].description + '">'
+							+ data[i].description + '</option>';
+				}
+				html += '</option>';
+				
+				$('#products').html(html);
+			});
+			
+		});
+	
+</script>
+
 </head>
 <body>
 <h1>Add New Item for Customer</h1>
@@ -26,6 +51,12 @@
 		<tr>
 			<td>Order Item:</td>
 			<td><form:input path="orderItem"/></td>
+		</tr>
+		<tr>
+			<td>Product:</td>
+			<td>
+				<form:select id="products" path="product"></form:select>
+			</td>
 		</tr>
 		<tr>
 			<td>Quantity:</td>

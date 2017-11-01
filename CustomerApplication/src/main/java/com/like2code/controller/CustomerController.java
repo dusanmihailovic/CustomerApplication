@@ -1,23 +1,19 @@
 package com.like2code.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.like2code.model.Customer;
-import com.like2code.model.State;
-import com.like2code.service.StateService;
+import com.like2code.service.CustomerService;
 
 @Controller
 public class CustomerController {
 	
 	@Autowired
-	private StateService stateService;
+	private CustomerService customerService;
 	
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
 	public String getCustomer(@ModelAttribute ("customer") Customer customer){
@@ -30,13 +26,10 @@ public class CustomerController {
 		
 		System.out.println("customer is: " + customer.getFirstName());
 		
+		customerService.save(customer);
+		
 		return "addCustomer";
 	}
 	
-	@RequestMapping(value = "/states", method = RequestMethod.GET)
-	public @ResponseBody List <State> findAllStates(){
-		return stateService.findAllStates();
-		
-	}
 	
 }
