@@ -11,8 +11,8 @@ import com.like2code.model.Item;
 import com.like2code.model.Product;
 import com.like2code.repository.ItemRepository;
 
-@Service("productService")
-public class ProductServiceImpl implements ProductService {
+@Service("itemService")
+public class ItemServiceImpl implements ItemService {
 	
 	@Autowired
 	private ItemRepository itemRepository;

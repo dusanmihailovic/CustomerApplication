@@ -5,7 +5,7 @@ import java.util.List;
 import com.like2code.model.Item;
 import com.like2code.model.Product;
 
-public interface ProductService {
+public interface ItemService {
 	
 	List<Product> findAllProducts();
 
