@@ -1,12 +1,16 @@
 package com.like2code.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.like2code.model.Customer;
+import com.like2code.model.ShoppingReport;
 import com.like2code.service.CustomerService;
 
 @Controller
@@ -31,5 +35,21 @@ public class CustomerController {
 		return "addCustomer";
 	}
 	
+	@RequestMapping(value="getCustomer", method = RequestMethod.GET)
+	public String getCustomers(Model model){
+		List<Customer> customers = customerService.findAllCustomers();
+		
+		model.addAttribute("customers", customers);
+		
+		return "getCustomer";
+	}
 	
+	@RequestMapping(value="shoppingReport", method=RequestMethod.GET)
+	public String getShoppingReport(Model model){
+		List<ShoppingReport> shoppingReports = customerService.findAllShoppingReports();
+		
+		model.addAttribute("shoppingReport", shoppingReports);
+		
+		return "shoppingReport";
+	}
 }

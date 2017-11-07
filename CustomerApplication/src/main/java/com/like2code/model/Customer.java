@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -20,7 +21,7 @@ public class Customer {
 	private String lastName;
 	private String city;
 	
-	@OneToMany(mappedBy="customer", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="customer", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Item> items = new ArrayList<Item>();
 
 	public String getCity() {
