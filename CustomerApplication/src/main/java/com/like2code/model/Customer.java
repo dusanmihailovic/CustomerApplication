@@ -8,10 +8,21 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name=Customer.FIND_SHOPPING_REPORTS, query="Select new com.like2code.model.ShoppingReport(c.firstName, c.lastName, i.orderItem, i.product, i.quantity, i.price)" + 
+			"from Customer c, Item i where c.customerId = i.customerId"),
+	@NamedQuery(name=Customer.FIND_ALL_CUSTOMERS, query="Select c from Customer c")
+})
+
 public class Customer {
+	
+	public static final String FIND_ALL_CUSTOMERS = "findAllCustomers";
+	public static final String FIND_SHOPPING_REPORTS = "findShoppingReports";
 	
 	@Id
 	@GeneratedValue

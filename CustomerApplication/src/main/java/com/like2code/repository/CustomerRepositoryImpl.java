@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -26,19 +26,19 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		return null;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<Customer> loadAll() {
-		Query query = em.createQuery("Select c from Customer c");
+//		Query query = em.createQuery("Select c from Customer c");
 		
-		List customers = query.getResultList();
+		TypedQuery<Customer> query = em.createNamedQuery(Customer.FIND_ALL_CUSTOMERS, Customer.class);
 		
-		return customers;
+		return query.getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<ShoppingReport> findAllShoppingReports() {
-		Query query = em.createQuery("Select new com.like2code.model.ShoppingReport(c.firstName, c.lastName, i.orderItem, i.product, i.quantity, i.price)" + 
-					"from Customer c, Item i where c.customerId = i.customerId");
+//		Query query = em.createQuery("Select new com.like2code.model.ShoppingReport(c.firstName, c.lastName, i.orderItem, i.product, i.quantity, i.price)" + 
+//					"from Customer c, Item i where c.customerId = i.customerId");
+		TypedQuery<ShoppingReport> query = em.createNamedQuery(Customer.FIND_SHOPPING_REPORTS, ShoppingReport.class);
+		
 		return query.getResultList();
 	}
 

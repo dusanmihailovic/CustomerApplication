@@ -68,5 +68,7 @@
 	</table>
 </form:form>
 
+<a href="index.jsp">Back</a>
+
 </body>
 </html>
