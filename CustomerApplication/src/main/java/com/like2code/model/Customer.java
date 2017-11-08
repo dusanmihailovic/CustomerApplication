@@ -13,11 +13,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name=Customer.FIND_SHOPPING_REPORTS, query="Select new com.like2code.model.ShoppingReport(c.firstName, c.lastName, i.orderItem, i.product, i.quantity, i.price)" + 
-			"from Customer c, Item i where c.customerId = i.customerId"),
-	@NamedQuery(name=Customer.FIND_ALL_CUSTOMERS, query="Select c from Customer c")
-})
+//@NamedQueries({
+//	@NamedQuery(name=Customer.FIND_SHOPPING_REPORTS, query="Select new com.like2code.model.ShoppingReport(c.firstName, c.lastName, i.orderItem, i.product, i.quantity, i.price)" + 
+//			"from Customer c, Item i where c.customerId = i.customerId"),
+//	@NamedQuery(name=Customer.FIND_ALL_CUSTOMERS, query="Select c from Customer c")
+//})
 
 public class Customer {
 	

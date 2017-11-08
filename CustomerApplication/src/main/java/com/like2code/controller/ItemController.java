@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.like2code.model.Customer;
 import com.like2code.model.Item;
@@ -18,16 +19,23 @@ import com.like2code.model.Product;
 import com.like2code.service.ItemService;
 
 @Controller
+@SessionAttributes
 public class ItemController {
 	
 	@Autowired
 	public ItemService itemService;
 	
 	@RequestMapping(value = "/addItem", method = RequestMethod.GET)
-	public String addItem(Model model){
+	public String addItem(Model model, HttpSession session){
+//		Item item = new Item();
 		
-		Item item = new Item();
-		item.setQuantity(1);
+		Item item = (Item)session.getAttribute("item"); 
+		
+		if(item == null) {
+			item = new Item();
+			item.setQuantity(1);
+		}
+		
 		model.addAttribute("item", item);
 		
 		return "addItem";

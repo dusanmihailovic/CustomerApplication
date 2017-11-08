@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	public List<Customer> findAllCustomers() {
-		return customerRepository.loadAll();
+		return customerRepository.findAll();
 	}
 
 	public List<ShoppingReport> findAllShoppingReports() {
