@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.like2code.model.Customer;
 import com.like2code.model.Item;
 import com.like2code.model.Product;
-import com.like2code.service.ItemService;
+import com.like2code.service.ApplicationService;
 
 @Controller
 @SessionAttributes
 public class ItemController {
 	
 	@Autowired
-	public ItemService itemService;
+	private ApplicationService applicationService;
 	
 	@RequestMapping(value = "/addItem", method = RequestMethod.GET)
 	public String addItem(Model model, HttpSession session){
@@ -50,14 +50,14 @@ public class ItemController {
 		
 		item.setCustomer(customer);
 		
-		itemService.save(item);
+		applicationService.save(item);
 		
 		return "addItem";
 	}
 	
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
 	public @ResponseBody List <Product> findAllProducts(){
-		return itemService.findAllProducts();
+		return applicationService.findAllProducts();
 	}
 
 }
