@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.like2code.model.Customer;
 import com.like2code.model.ShoppingReport;
-import com.like2code.service.ApplicationService;
+import com.like2code.service.CustomerService;
 
 @Controller
 public class CustomerController {
 	
 	@Autowired
-//	private CustomerService customerService;
-	private ApplicationService customerService;
+	private CustomerService customerService;
 	
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
 	public String getCustomer(@ModelAttribute ("customer") Customer customer){
